@@ -37,7 +37,7 @@
                               <td>{{Helper::bulanTahun($key)}}</td>
                               
                               <td class="">
-                                <a href="{{ url('/dashboard/jurnal/data/'.$key)}}" class="btn btn-primary btn-circle ">
+                                <a href="{{ url('/dashboard/bukubesar/data/'.$key)}}" class="btn btn-primary btn-circle ">
                                   Detail
                               </a>
                                 
