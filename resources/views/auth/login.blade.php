@@ -10,7 +10,7 @@
   <meta name="keywords" content="SIA">
   <meta name="author" content="SIA">
 
-  <title>WanApp | Login</title>
+  <title>SIA PIT | Login</title>
 
   <link rel="stylesheet" type="text/css" href="{{asset('assets/css/styles.css')}}">
 

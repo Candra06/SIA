@@ -12,9 +12,10 @@
   <title>Dashboard | {{ucfirst(Request::segment(2))}}</title>
   
   <link rel="stylesheet" type="text/css" href="{{asset('assets/css/styles.css')}}">
+  <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-  <script src="{{asset('assets/js/all.min.js')}}"></script>
-  <script src="{{asset('assets/js/feather.min.js')}}"></script>
+  <script src="{{asset("assets/js/all.min.js")}}"></script>
+  <script src="{{asset("assets/js/feather.min.js")}}"></script>
 
   @stack('styles')
 </head>
@@ -52,7 +53,7 @@
           <div class="container-fluid">
               <div class="row">
                   <div class="col-md-6 small">
-                    Copyright &#xA9; <a href="http://uruntugas.xyz" class="text-decoration-none text-primary">SIA PrimaItech</a> 2020
+                    Copyright &#xA9; <a href="http://uruntugas.xyz" class="text-decoration-none text-primary">SIA PrimaItech</a> 2021
                   </div>
                   <div class="col-md-6 text-md-right small">
                       <a href="#!">Privacy Policy</a>
@@ -115,6 +116,9 @@
   <script src="{{asset('assets/js/jquery-3.5.1.min.js')}}"></script>
   <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('assets/js/scripts.js')}}"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+  <script src="{{asset('assets/demo/datatables-demo.js')}}"></script>
   <script type="text/javascript">
     function modal_konfir(url) {
       $('#modal_delete').modal('show', {
@@ -122,7 +126,7 @@
       });
       document.formdelete.action = url;
     }
-    
+
     function modal_konfir_custom(url, pesan) {
         $('#modal_konfirmasi').modal('show', {
             backdrop: 'static'

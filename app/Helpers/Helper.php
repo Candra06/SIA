@@ -40,7 +40,7 @@ class Helper
 
         $akses_submenu = AccessSubmenu::where(['role_id' => $role_id, 'submenu_id' => $akses_submenu_id])->first();
 
-        if($akses_submenu == NULL) {
+        if ($akses_submenu == NULL) {
             return 0;
         }
 
@@ -52,9 +52,9 @@ class Helper
         $role_id = Auth::user()->role_id;
         $main_submenu = '/' . Request::segment(1) . '/' . Request::segment(2) . '/' . Request::segment(3);
         $permission = DB::table('submenus')
-        ->join('access_submenus', 'submenus.id', '=', 'access_submenus.submenu_id')
-        ->where(['access_submenus.role_id' => $role_id, 'submenus.url' => $main_submenu])
-        ->first();
+            ->join('access_submenus', 'submenus.id', '=', 'access_submenus.submenu_id')
+            ->where(['access_submenus.role_id' => $role_id, 'submenus.url' => $main_submenu])
+            ->first();
         return $permission;
     }
 
@@ -67,5 +67,22 @@ class Helper
     {
         return "Rp. " . number_format($price, 0, ',', '.');
     }
-}
 
+    public static function bulanTahun($tgl)
+    {
+        $qq = '';
+        $k = explode("-", $tgl);
+        $bln = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
+        $qq = $bln[(int)$k[1]];
+        return $qq . ' ' . $k[0];
+    }
+
+    public static function tanggal($tgl)
+    {
+        $qq = '';
+        $k = explode("-", $tgl);
+        $bln = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
+        $qq = $bln[(int)$k[1]];
+        return $k[2].' '.$qq . ' ' . $k[0];
+    }
+}
