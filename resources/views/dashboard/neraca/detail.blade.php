@@ -78,9 +78,9 @@
 
                                 @endforeach
                                 <tr>
-                                    <td colspan="2" class="text-center">Total</td>
-                                    <td>{{ Helper::price($ttl_debit) }}</td>
-                                    <td>{{ Helper::price($ttl_kredit) }}</td>
+                                    <td colspan="2" class="text-center"><strong>Total </strong></td>
+                                    <td><strong>{{ Helper::price($ttl_debit) }}</strong></td>
+                                    <td><strong>{{ Helper::price($ttl_kredit) }}</strong></td>
                                 </tr>
                             </tbody>
 

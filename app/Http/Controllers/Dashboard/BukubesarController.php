@@ -57,7 +57,7 @@ class BukubesarController extends Controller
             ->leftJoin('users', 'users.id', 'transaksi.id_user')
             ->whereYear('transaksi.tanggal_transaksi', '=', $dt[0])
             ->whereMonth('transaksi.tanggal_transaksi', '=', $dt[1])
-            ->select('transaksi.*', 'users.name', 'akun.nama_reff', 'akun.no_reff')
+            ->select('transaksi.*', 'users.name', 'akun.nama_reff', 'akun.no_reff', 'akun.keterangan')
             ->get()
             ->groupBy(function ($val) {
                 return $val->nama_reff.'-'.$val->no_reff;

@@ -61,7 +61,7 @@
                                             @endif
                                             {{-- <td></td> --}}
                                             <td>{{ Helper::tanggal($item->tanggal_transaksi) }}</td>
-                                            <td>{{ $item->nama_reff }}</td>
+                                            <td>{{ $item->keterangan }}</td>
                                             <td>{{ $item->jenis_transaksi == 'debit' ? Helper::price($item->saldo) : Helper::price(0) }}
                                             </td>
                                             <td>{{ $item->jenis_transaksi == 'kredit' ? Helper::price($item->saldo) : Helper::price(0) }}

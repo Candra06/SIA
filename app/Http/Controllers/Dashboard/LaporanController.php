@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Akun;
 use App\Http\Controllers\Controller;
 use App\Transaksi;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LaporanController extends Controller
 {
@@ -51,7 +53,41 @@ class LaporanController extends Controller
      */
     public function show($id)
     {
-        //
+        $dt = explode('-', $id);
+        $pendapatan = Transaksi::leftJoin('akun', 'akun.id', 'transaksi.id_akun')
+
+            ->whereYear('transaksi.tanggal_transaksi', '=', $dt[0])
+            ->whereMonth('transaksi.tanggal_transaksi', '=', $dt[1])
+            ->where('akun.nama_reff', 'like', '%Pendapatan%')
+            ->select('transaksi.*', 'akun.nama_reff', 'akun.no_reff', 'akun.keterangan')
+            ->get()
+            ->groupBy(function ($val) {
+                return $val->nama_reff.'-'.$val->no_reff;
+            });;
+        $tes = Akun::leftJoin('transaksi', 'transaksi.id_akun', 'akun.id')
+            ->whereYear('transaksi.tanggal_transaksi', '=', $dt[0])
+            ->whereMonth('transaksi.tanggal_transaksi', '=', $dt[1])
+            ->where('akun.nama_reff', 'like', '%Pendapatan%')
+            ->select('transaksi.*', 'akun.nama_reff', 'akun.no_reff', 'akun.keterangan')
+            ->get();
+        // $t1 = DB::table('akun')->select('akun.nama_reff', '')->where('nama_reff', 'like', '%Pendapatan%');
+        // $t2 = DB::table('transaksi')
+        // ->whereNull('id_akun')
+        // ->union($t1)
+        // ->get();
+        // return $pendapatan;
+        $beban = Transaksi::leftJoin('akun', 'akun.id', 'transaksi.id_akun')
+
+            ->whereYear('transaksi.tanggal_transaksi', '=', $dt[0])
+            ->whereMonth('transaksi.tanggal_transaksi', '=', $dt[1])
+            ->where('akun.nama_reff', 'like', '%Beban%')
+            ->select('transaksi.*', 'akun.nama_reff', 'akun.no_reff', 'akun.keterangan')
+            ->get()
+            ->groupBy(function ($val) {
+                return $val->nama_reff.'-'.$val->no_reff;
+            });;
+        // return $beban;
+        return view('dashboard.laporan.detail', compact('pendapatan', 'beban'));
     }
 
     /**
