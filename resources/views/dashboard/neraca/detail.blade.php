@@ -57,7 +57,7 @@
                                                 @php
                                                     $sld_kredit = $sld_kredit + $item->saldo;
                                                     $sld_debit = $sld_debit - $sld_kredit;
-                                                    $ttl_kredit = $ttl_kredit + $sld_kredit;
+                                                    $ttl_kredit = $ttl_kredit + $item->saldo;
                                                 @endphp
 
                                             @endif
